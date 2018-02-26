@@ -165,7 +165,7 @@ AlphaBeta2::AlphaBeta2(const ActionOptions&ao):
 		 Tools::convert(int(i+1),eno);
 		 error("Can't find REFB"+eno+"!");
 	 }
-	 csin12[i]=sin((target1[i]-target2[i])/2.0);
+	 csin12[i]=sin((target2[i]-target1[i])/2.0);
   }
   
   // Read in weights
@@ -222,7 +222,7 @@ double AlphaBeta2::compute( const unsigned& tindex, AtomValuePack& myatoms ) con
   const double vsin2  = sin((target2[tindex]-value)/2.0);
   const double v2cos  = 2.0-vcos1-vcos2;
   const double svalue = 8*csin12[tindex]*vsin1*vsin2/(v2cos*v2cos)*weights[tindex];
-  const double cvalue = (vcos2-vcos1)/v2cos*weights[tindex];
+  const double cvalue = (vcos1-vcos2)/v2cos*weights[tindex];
 
   dd0 *= svalue;
   dd1 *= svalue;
